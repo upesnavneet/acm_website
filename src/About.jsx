@@ -1,10 +1,22 @@
 import React from 'react';
 import Stack from '../Stack/Stack/Stack';
 import './About.css';
+import backgroundVideo from '../background.mp4';
 
 const About = () => {
   return (
     <div className="about-container" data-scroll-section>
+      {/* Background video */}
+      <video
+        className="background-video"
+        src={backgroundVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+
+      {/* Content over video */}
       <div className="stack-container">
         <Stack />
       </div>

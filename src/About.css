@@ -1,4 +1,3 @@
-
 .about-container {
   position: relative;
   width: 100%;
@@ -8,12 +7,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 14rem;  
+  column-gap: 14rem;
   flex-wrap: wrap;
   z-index: 1;
-  background-color: black;
+  background-color: transparent; /* ✅ Updated */
 }
-
 .about-section {
   min-height: 100vh;
   height: auto;
@@ -68,3 +66,27 @@
   color: white;
 }
 
+.about-container {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+  filter: none !important;
+}
+
+.about-content,
+.stack-container {
+  position: relative;
+  z-index: 1;
+}

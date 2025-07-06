@@ -8,7 +8,8 @@
   z-index: 1000;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(14px);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'myriad-pro', sans-serif;
+  font-weight: 700;
   transition: top 0.4s ease-in-out;
 }
 
