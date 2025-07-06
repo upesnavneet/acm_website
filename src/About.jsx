@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Stack from '../Stack/Stack/Stack';
 import './About.css';
 import backgroundVideo from '../background.mp4';
 
 const About = () => {
+  const videoRef = useRef();
+  const sectionRef = useRef();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisible(entry.isIntersecting);
+      },
+      { threshold: 0.3 } // 30% of the section needs to be visible
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="about-container" data-scroll-section>
-      {/* Background video */}
+    <div ref={sectionRef} className="about-container" data-scroll-section>
       <video
-        className="background-video"
+        className={`background-video ${visible ? 'fade-in' : 'fade-out'}`}
         src={backgroundVideo}
         autoPlay
         loop
         muted
         playsInline
+        ref={videoRef}
       />
-
-      {/* Content over video */}
+      
       <div className="stack-container">
         <Stack />
       </div>

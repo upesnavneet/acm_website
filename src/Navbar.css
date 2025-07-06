@@ -6,19 +6,22 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(14px);
   font-family: 'myriad-pro', sans-serif;
-  font-weight: 700;
-  transition: top 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out; /* ✅ Corrected */
 }
 
 .navbar.hide {
-  top: -100px;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .navbar.show {
-  top: 0;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .navbar-container {

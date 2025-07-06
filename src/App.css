@@ -54,8 +54,6 @@ section {
   width: 100vw;
   min-height: 100vh;
   position: relative;
-  padding: 2rem;
-  background: black;
   overflow-x: hidden;
 
 }
@@ -75,13 +73,6 @@ section {
   position: relative;
 }
 
-.app-scroll-wrapper {
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative; /* ✅ Add this if missing */
-  z-index: 0;         /* ✅ Prevent it from becoming an upper stack context */
-}
 
 
 .scroll-content {

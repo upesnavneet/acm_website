@@ -1,6 +1,3 @@
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { useEffect } from 'react';
 
 import Particles from '../Background1/Particles/Particles';
 import Home from './home';
@@ -11,48 +8,17 @@ import Robot from './Robot';
 import Initiatives from './Initiatives';
 import './index.css';
 
-const FadeSection = ({ children, className, id }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
 
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    } else {
-      controls.start('hidden');
-    }
-  }, [controls, inView]);
-
-  return (
-    <motion.section
-      ref={ref}
-      className={className}
-      id={id}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      transition={{ duration: 1.5, ease: 'easeOut' }}
-    >
-      {children}
-    </motion.section>
-  );
-};
 
 function App() {
   return (
     <>
-      <div className="app-scroll-wrapper">
+ 
         <Navbar />
 
         <main className="scroll-content">
           
-          <FadeSection className="particles-section">
+            <section className="particles-section">
             <Home />
             <Particles
               particleColors={['#00000000']}
@@ -64,21 +30,22 @@ function App() {
               alphaParticles={false}
               disableRotation={false}
             />
-          </FadeSection>
+            </section>
 
-          <FadeSection className="about-section" id="about">
-            <About />
-          </FadeSection>
+           <section className="about-section" id="about">
+              <About />
+            </section>
 
-          <FadeSection className="initiatives-section" id="initiatives">
-            <Initiatives />
-          </FadeSection>
+           <section className="initiatives-section" id="initiatives">
+             <Initiatives />
+           </section>
 
-          <FadeSection className="robot-section" id="robot">
-            <Robot />
-          </FadeSection>
+           <section className="robot-section" id="robot">
+              <Robot />
+           </section>
+
         </main>
-      </div>
+
     </>
   );
 }

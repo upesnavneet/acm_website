@@ -7,24 +7,21 @@ function Navbar() {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const scrollContainer = document.querySelector(".app-scroll-wrapper");
-
     const handleScroll = () => {
-      if (!scrollContainer) return;
-
-      const currentScrollY = scrollContainer.scrollTop;
+      const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY.current) {
-        setShow(false); // Scrolling down
+        setShow(false); // Scrolling down → hide navbar
       } else {
-        setShow(true); // Scrolling up
+        setShow(true); // Scrolling up → show navbar
       }
 
       lastScrollY.current = currentScrollY;
     };
 
-    scrollContainer?.addEventListener("scroll", handleScroll);
-    return () => scrollContainer?.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
