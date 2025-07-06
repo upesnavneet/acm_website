@@ -30,7 +30,7 @@ function Navbar() {
   return (
     <nav className={`navbar ${show ? "show" : "hide"}`}>
       <div className="navbar-container">
-        <a href="/" className="navbar-logo">
+        <a href="https://upesnavneet.github.io/acm_website/" className="navbar-logo">
           <img src={logo} alt="ACM Logo" className="logo-img" />
         </a>
         <ul className="navbar-links">
