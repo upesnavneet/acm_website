@@ -1,0 +1,70 @@
+
+.about-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 14rem;  
+  flex-wrap: wrap;
+  z-index: 1;
+  background-color: black;
+}
+
+.about-section {
+  min-height: 100vh;
+  height: auto;
+}
+
+
+.about-content h3 {
+  font-size: 1.5rem;
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+
+.glow-text {
+  color: #4627f3;
+  text-shadow: 0 0 8px #4627f3, 0 0 16px #4627f3;
+}
+
+.about-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.about-title {
+  font-family: 'Orbitron';
+  font-size: 2rem;
+  color: #2f1fa4;
+  margin-bottom: 1rem;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.learn-more-btn {
+  background-color: transparent;
+  border: 2px solid #1f28a4;
+  color: #2f1fa4;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  background-color: #3027ea;
+  color: white;
+}
+

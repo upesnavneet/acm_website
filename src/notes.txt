@@ -1,0 +1,3 @@
+-add about section background and cards
+-add our initiatives section with that card thing from reactbits.dev
+-fix the cards
