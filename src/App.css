@@ -1,3 +1,4 @@
+/* Reset and base setup */
 * {
   margin: 0;
   padding: 0;
@@ -7,32 +8,53 @@
 html, body {
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
   scroll-behavior: smooth;
-  font-family: sans-serif;
-  background: rgb(0, 0, 0);
-  max-width: 100%; /* ✅ Prevents accidental overflow */
 }
 
+.horizontal-scroll-section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.horizontal-scroll-wrapper {
+  display: flex;
+  width: max-content;
+  height: 100vh;
+}
+
+.app-section {
+  flex: 0 0 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+/* Hide scrollbars */
 body::-webkit-scrollbar {
   display: none;
 }
-
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* ===== Fix absolute children that might overflow ===== */
+/* Particle section layout fixes */
 .particles-section {
   position: relative;
 }
-
 .particles-section > *:first-child,
 .particles-section > *:last-child {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;  /* ✅ Avoid 100vw */
+  width: 100%;
   height: 100%;
   z-index: 1;
 }
@@ -42,6 +64,7 @@ body {
   pointer-events: none;
 }
 
+/* Background utility class */
 .background-section {
   background-color: black;
   display: flex;
@@ -49,48 +72,92 @@ body {
   justify-content: center;
 }
 
+/* Section defaults */
 section {
-  width: 100%; /* ✅ Changed from 100vw */
+  width: 100%;
   min-height: 100vh;
   position: relative;
 }
 
-.robot-wrapper {
-  width: 100%;
-  height: 100%;
-  max-width: 100%; /* ✅ Ensure it doesn’t expand horizontally */
-  overflow: hidden; /* ✅ Keep canvas from escaping without affecting scroll */
-}
-
+/* Robot section specifically */
 .robot-section {
   width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0);
+  min-height: 100vh;
+  background-color: transparent;
   position: relative;
+  overflow: hidden;
 }
 
+/* Wrapper for internal scrollable content */
+.robot-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Background video in robot */
+.robot-background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Scroll content helper */
 .scroll-content {
   display: flex;
   flex-direction: column;
 }
 
-/* Scrollbar Styling (for fallback cases) */
+/* Scrollbar fallback */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
-
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #4627f3;
   border-radius: 6px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #6c48f5;
 }
+
+
+
+html {
+  overflow-y: scroll; 
+}
+
+body {
+  overflow-x: clip; 
+}
+
+.horizontal-scroll-wrapper {
+  display: flex;
+  height: 100vh;
+  width: max-content;
+}
+
+.app-section {
+  flex: 0 0 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  opacity: 0; /* Start faded out */
+  transition: opacity 0.5s ease;
+}
+
+
+
+

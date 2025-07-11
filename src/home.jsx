@@ -1,13 +1,23 @@
+import { useRef } from 'react';
 import Spline from '@splinetool/react-spline';
+import './Home.css';
+import patch from '../src/assets/logo.png'; // Adjust path if needed
 
 function Home() {
+  const wrapperRef = useRef(null);
+
   return (
-    <main>
-      <Spline
-        scene="https://prod.spline.design/YuDYpOXFvZdDEsm4/scene.splinecode"
+    <main className="home-container" ref={wrapperRef}>
+      <Spline scene="https://prod.spline.design/YuDYpOXFvZdDEsm4/scene.splinecode" />
+
+      {/* Bottom-right corner patch image (always visible) */}
+      <img
+        src={patch}
+        alt="Watermark Patch"
+        className="watermark-patch"
       />
     </main>
   );
 }
 
-export default Home
+export default Home;

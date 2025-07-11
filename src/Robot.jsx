@@ -1,15 +1,27 @@
 import { useEffect, useRef, useState } from 'react';
 import Spline from '@splinetool/react-spline';
+import Robot_Background from '../Robot_Background.mp4';
 
 function Robot() {
   const wrapperRef = useRef(null);
+  const videoRef = useRef(null);
+
   const [showRobot, setShowRobot] = useState(false);
+  const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        const inView = entry.isIntersecting;
+
+        if (inView && !hasPlayed) {
           setShowRobot(true);
+          setHasPlayed(true);
+
+          if (videoRef.current && videoRef.current.paused) {
+            videoRef.current.play();
+          }
+
           setTimeout(() => {
             const canvas = wrapperRef.current?.querySelector('canvas');
             if (canvas) {
@@ -24,27 +36,39 @@ function Robot() {
                 })
               );
             }
-          }, 300); // wait for canvas to render
+          }, 300);
         }
       },
-      {
-        threshold: 0.5,
-      }
+      { threshold: 0.3 }
     );
 
-    if (wrapperRef.current) {
-      observer.observe(wrapperRef.current);
-    }
+    if (wrapperRef.current) observer.observe(wrapperRef.current);
 
     return () => {
       if (wrapperRef.current) observer.disconnect();
     };
-  }, []);
+  }, [hasPlayed]);
+
+  const handleVideoEnd = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = videoRef.current.duration;
+    }
+  };
 
   return (
     <div className="robot-wrapper" ref={wrapperRef}>
+      <video
+        ref={videoRef}
+        className="robot-background-video"
+        src={Robot_Background}
+        muted
+        playsInline
+        onEnded={handleVideoEnd}
+      />
+
       {showRobot && (
-        <Spline scene="https://prod.spline.design/CxsNMqmHnwzkPn98/scene.splinecode" />
+        <Spline scene="https://prod.spline.design/ZE3KD8HNLrviO0HS/scene.splinecode" />
       )}
     </div>
   );
