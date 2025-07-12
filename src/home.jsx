@@ -8,9 +8,13 @@ function Home() {
 
   return (
     <main className="home-container" ref={wrapperRef}>
-      <Spline scene="https://prod.spline.design/YuDYpOXFvZdDEsm4/scene.splinecode" />
+      <div className="spline-wrapper">
+        <Spline
+          scene="https://prod.spline.design/YuDYpOXFvZdDEsm4/scene.splinecode"
+          className="spline-scene"
+        />
+      </div>
 
-      {/* Bottom-right corner patch image (always visible) */}
       <img
         src={patch}
         alt="Watermark Patch"

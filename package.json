@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@splinetool/react-spline": "^4.0.0",
-    "@splinetool/runtime": "^1.10.26",
+    "@splinetool/runtime": "^1.10.27",
     "framer-motion": "^12.23.0",
     "gsap": "^3.13.0",
     "locomotive-scroll": "^4.1.4",
